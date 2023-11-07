@@ -1,14 +1,14 @@
 
-const input = prompt('Inserisci una parola');
+let user = prompt('Inserisci una parola');
 // Check if the input is a palindrome
-if (isPalindrome(input)) {
-    alert('La parola ' + input + ' è palindroma');
+if (isPalindrome(user)) {
+    alert('La parola ' + user + ' è palindroma');
 } else {
-    alert('La parola ' + input + ' non è palindroma');
+    alert('La parola ' + user + ' non è palindroma');
 }
 
-const userChoice = prompt('Scegli pari o dispari');
-const number = parseInt(prompt('Inserisci un numero da 1 a 5'));
+let userChoice = prompt('Scegli pari o dispari');
+let number = parseInt(prompt('Inserisci un numero da 1 a 5'));
 evenOdd(userChoice, number);
 
 /**
@@ -21,16 +21,16 @@ function isPalindrome(input) {
     // input validation
     if (input == null || input == undefined || input == '') {
         alert('Scelta non valida');
-        return isPalindrome(prompt('Inserisci una parola'));
+        user = prompt('Inserisci una parola');
+        return isPalindrome(user);
     }
 
     for (let i = 0; i < input.length; i++) {
         if (input[i] != input[input.length - 1 - i]) {
             return false;
-        } else {
-            return true;
         }
     }
+    return true
 }
 
 /**
@@ -46,7 +46,7 @@ function evenOdd(input, number) {
         alert('Scelta non valida');
         return evenOdd(prompt('Scegli pari o dispari'), number);
     }
-    if (number < 1 || number > 5) {
+    if (number < 1 || number > 5 || isNaN(number)) {
         alert('Numero non valido');
         return evenOdd(input, prompt('Inserisci un numero da 1 a 5'));
     }
